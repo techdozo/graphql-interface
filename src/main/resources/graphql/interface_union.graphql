@@ -1,0 +1,49 @@
+type Query {
+    courses: [Course!]!
+    allMedia: [Media!]!
+}
+
+
+
+interface Course {
+    id : ID!
+    name : String!
+    price: Float!
+    startDate: String!
+    endDate: String!
+}
+
+type OnlineCourse implements Course  {
+    id : ID!
+    name : String!
+    price: Float!
+    startDate: String!
+    endDate: String!
+}
+
+type OfflineCourse implements Course {
+    id : ID!
+    name : String!
+    price: Float!
+    startDate: String!
+    endDate: String!
+    location: Location
+}
+
+type Location {
+    address : String
+}
+
+union Media = Book | Movie
+
+type Book {
+    name : String!
+    publisher: String!
+    author : String!
+}
+
+type Movie {
+    title : String!
+    director: String
+    actors : [String!]!
+}
